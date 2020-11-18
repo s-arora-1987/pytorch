@@ -696,28 +696,6 @@ class AbstractTestCases:
             self.assertEqual('cuda', cuda23333.type)
             self.assertEqual(23333, cuda23333.index)
 
-            self.assertRaises(RuntimeError, lambda: torch.device('cpu:-1'))
-            self.assertRaises(RuntimeError, lambda: torch.device('cpu:1'))
-            self.assertRaises(RuntimeError, lambda: torch.device('cpu', -1))
-            self.assertRaises(RuntimeError, lambda: torch.device('cpu', 1))
-            self.assertRaises(RuntimeError, lambda: torch.device('cuda:-1'))
-            self.assertRaises(RuntimeError, lambda: torch.device('cuda:2 '))
-            self.assertRaises(RuntimeError, lambda: torch.device('cuda: 2'))
-            self.assertRaises(RuntimeError, lambda: torch.device('cuda:2 2'))
-            self.assertRaises(RuntimeError, lambda: torch.device('cuda:2.'))
-            self.assertRaises(RuntimeError, lambda: torch.device('cuda:2?'))
-            self.assertRaises(RuntimeError, lambda: torch.device('cuda:?2'))
-            self.assertRaises(RuntimeError, lambda: torch.device('cuda:'))
-            self.assertRaises(RuntimeError, lambda: torch.device('cuda:2.232'))
-            self.assertRaises(RuntimeError, lambda: torch.device('cuda:2 cuda:3'))
-            self.assertRaises(RuntimeError, lambda: torch.device('cuda:2+cuda:3'))
-            self.assertRaises(RuntimeError, lambda: torch.device('cuda:2cuda:3'))
-            self.assertRaises(RuntimeError, lambda: torch.device('cuda', -1))
-            self.assertRaises(RuntimeError, lambda: torch.device(-1))
-
-            self.assertRaises(RuntimeError, lambda: torch.device('other'))
-            self.assertRaises(RuntimeError, lambda: torch.device('other:0'))
-
             device_set = {'cpu', 'cpu:0', 'cuda', 'cuda:0', 'cuda:1', 'cuda:10', 'cuda:100'}
             device_hash_set = set()
             for device in list(device_set):
